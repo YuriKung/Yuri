@@ -1,0 +1,50 @@
+--spam skill pika pika--
+_G.Spam = true
+_G.Equip = false
+_G.Quest = true
+_G.Anti = true
+_G.Stats = false
+local WeaponName = "Light"
+local CtrlSkill =  "X"
+spawn(function()
+while _G.Spam do wait()
+    pcall(function()
+    local Name = WeaponName
+    local skill = CtrlSkill
+    local sad = game.Players.LocalPlayer
+    sad.Character[Name][skill].Fire:FireServer(sad)
+    end)
+end
+end)
+    spawn(function()
+        while _G.Equip do wait()
+            pcall(function()
+            Weapon = WeaponName
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+        end)
+end
+end)
+spawn(function()
+while _G.Quest do wait()
+game:GetService("Players").LocalPlayer.PlayerGui.QuestTake.Accept1.RemoteEvent:FireServer()
+end
+end)
+spawn(function()
+    if _G.Anti then
+        _G.Anti = vu
+        local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+end
+end)
+spawn(function()
+while _G.Stats do wait()
+local GG = {
+    [1] = "DevilFruit"
+    }
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer(unpack(GG))
+end
+end)
